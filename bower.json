@@ -1,0 +1,26 @@
+{
+  "name": "app",
+  "description": "app: A Mediafly project",
+  "main": "index.js",
+  "authors": [
+    "Scott Sanford"
+  ],
+  "license": "ISC",
+  "moduleType": [],
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "^1.5.0",
+    "jquery": "^2.2.0",
+    "angular-route": "^1.5.0",
+    "mfly-commands": "^1.9.10",
+    "highcharts": "^4.2.3",
+    "bootstrap": "^3.3.6"
+  }
+}
