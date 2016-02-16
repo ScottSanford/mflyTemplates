@@ -9,7 +9,7 @@ var inquirer = require('inquirer');
 var dest = args.template;
 
 gulp.task('zip', function(){
-	return gulp.src('www/*')
+	return gulp.src('www/**')
 		.pipe(zip('interactive.zip'))
 		.pipe(gulp.dest('build'));
 });

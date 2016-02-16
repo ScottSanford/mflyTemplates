@@ -36,6 +36,10 @@ w
 	margin-top:100px;
 }
 
+.margin-bottom-50 {
+	margin-bottom: 50px;
+}
+
 .color-red {
 	color:#ff0000;
 }
@@ -43,7 +47,7 @@ w
 /*===================================================================================
 
 
-								Global Styles
+								UI Styles
 
 
 ====================================================================================*/
@@ -52,13 +56,51 @@ div[back-img]{
     height: 100%;
     color: #fff;
     position: fixed;
+    top:0;
+    z-index: -1;
     background-repeat: no-repeat;
 }
 
 .ui-logo {
-	width:500px;
+	width:400px;
 	height:auto;
-	margin:15px 15px;
 	z-index: 10;
 	position: absolute;
+	top:15px;
+	left:15px;
+}
+
+/********       @Featured    *******/
+.featured-container {
+	margin:75px 45px 0 0;
+}
+
+.featured-thumb{
+	z-index: 100;
+	max-width:400px;
+	max-height:auto;
+}
+
+/********    Top Level Sales    *******/
+
+.top-sales-container {
+	height:100%;
+}
+
+.vertical-center-row {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.thumb {
+	width:160px;
+	height:160px;
+	box-shadow: 3px 3px 3px #494948;
+    display:block;
+    float:left;
+    list-style:none;
+    margin:10px;
+    padding:0;
+    position:relative;
+    right:50%;
 }

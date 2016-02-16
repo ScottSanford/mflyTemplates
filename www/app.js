@@ -4,7 +4,7 @@ angular.module("mflyTemplateApp", [
 
         .config(function ($routeProvider, $compileProvider) { 
 
-              $compileProvider.imgSrcSanitizationWhitelist(/^(mfly:\/\/data\/entry|http:\/\/)/);  
+              $compileProvider.imgSrcSanitizationWhitelist(/^(mfly:\/\/data\/entry|https:\/\/)/);  
               $routeProvider
                 .when('/', {
                     templateUrl: 'components/ui/ui-1/ui-1.html',
