@@ -1,0 +1,41 @@
+<div class="row">
+	<div class="col-sm-4">
+		<a href="#/"><img class="side-nav-logo" ng-src="{{logo}}"></a>
+	</div>
+	<div class="col-sm-8"></div>
+</div>
+
+<!-- make nav a directive widget -->
+<div class="row">
+	<div class="col-sm-4">
+		<ul class="nav nav-pills nav-stacked">
+		  <li ng-repeat="nav in navs">
+		  	<a class="side-bar-nav" ng-click="subFolder(nav.id); toggleClass($index)">
+		  		
+		  		<div class="row">
+
+					<img src="{{nav.thumbnailUrl}}" class="col-sm-4 img-responsive sidenav-thumbnail">
+					<span class="col-sm-8 pull-right folder-name">
+						{{nav.name}}
+					</span>
+					
+		  		</div>
+				
+		  	</a>
+		  </li>
+		</ul>
+	</div>
+	
+	<div class="col-sm-8 list-view">
+
+			<span class="folder-title">{{title}}</span>
+
+			<div class="purple-divider"></div>
+
+			<ul class="main-content-list">
+				<a ng-click="openFolder(item.id)" ng-repeat="item in folder">
+					<li>{{item.name}}</li>
+				</a>
+			</ul>
+	</div>
+</div>

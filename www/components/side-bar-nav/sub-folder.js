@@ -1,11 +1,29 @@
 angular.module('mflyTemplateApp')
 
-	.controller('SubFolderCtrl', function($scope){
-		$scope.viewClass = "cbr-partnership";
+	.controller('SubFolderCtrl', function($scope, $routeParams, mflyTemplates){
 
-		// use search(keyword) promise 
-		// attach folder list within main directory folder
-		// from folder's list, openFolder(id)
+
+		mflyTemplates.searchFolders('@mainNav').then(function(data) {
+			console.log(data);
+			$scope.navs = data;
+
+		});
+
+		$scope.logo = mflyTemplates.getLogo();
+
+		var id = $routeParams.id;
+
+		mflyTemplates.getItem(id).then(function(data){
+			$scope.title = data.name;
+		});
+
+		mflyTemplates.getFolder(id).then(function(data){
+			$scope.folder = data;
+		});
+
+		$scope.openFolder = function() {
+
+		};
 
 
 	})

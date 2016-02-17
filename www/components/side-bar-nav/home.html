@@ -6,11 +6,26 @@
 	<div class="col-sm-8"></div>
 </div>
 
-<div class="row">
-	<div class="col-sm-4">
-		Hello World
+<div class="row no-gutter mainnav-container">
+	<div class="col-sm-4 nav-container">
+		<ul class="nav nav-pills nav-stacked">
+		  <li ng-repeat="folder in folders">
+		  	<a class="side-bar-nav" ng-click="subFolder(folder.id); toggleClass($index)">
+		  		
+		  		<div class="row">
+
+					<img src="{{folder.thumbnailUrl}}" class="col-sm-4 img-responsive sidenav-thumbnail">
+					<span class="col-sm-8 pull-right folder-name">
+						{{folder.name}}
+					</span>
+					
+		  		</div>
+				
+		  	</a>
+		  </li>
+		</ul>
 	</div>
 	<div class="col-sm-8">
-		<img src="common/img/mainlandingimage.jpg" >
+		<img src="common/img/mainlandingimage.jpg" class="img-responsive home-img">
 	</div>	
 </div>

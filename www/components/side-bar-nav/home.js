@@ -1,25 +1,35 @@
 angular.module('mflyTemplateApp')
 	.controller('HomeCtrl', function($scope, $location, mflyTemplates){
-		
-		$scope.viewClass = "landing-page";
 
 		$scope.logo = mflyTemplates.getLogo();
 
-		$scope.closeApp = function() {
-			mflyTemplates.showControlBars();
+		mflyTemplates.searchFolders('@mainNav').then(function(data) {
+
+			$scope.folders = data;
+
+		})
+
+
+		$scope.subFolder = function(id) {
+			var url = '/sub-folder?id=' + id;
+			$location.url(url);
 		}
 
-		var rootID = "__root__";
+		// $scope.closeApp = function() {
+		// 	mflyTemplates.showControlBars();
+		// }
+
+		// var rootID = "__root__";
 		
-		mflyTemplates.getFolder(rootID).then(function(data){
-			var dataArray = data;
-			var sliceData = dataArray.slice(1,5);
-			$scope.folders = sliceData.map(function(item){
-				item.class = item.name.replace(' ', '-').toLowerCase();
-				item.inactive = false;
-				return item;
-			});
-		})
+		// mflyTemplates.getFolder(rootID).then(function(data){
+		// 	var dataArray = data;
+		// 	var sliceData = dataArray.slice(1,5);
+		// 	$scope.folders = sliceData.map(function(item){
+		// 		item.class = item.name.replace(' ', '-').toLowerCase();
+		// 		item.inactive = false;
+		// 		return item;
+		// 	});
+		// })
 
 		$scope.toggleClass = function(index) {
 			$scope.folders.forEach(function(folder){
@@ -28,14 +38,14 @@ angular.module('mflyTemplateApp')
 			$scope.folders[index].inactive = false;
 		}
 
-		$scope.makeAllActiveClasses = function() {
-			$location.url('/');
-			$scope.folders.forEach(function(folder){
-				folder.inactive = false;
-			})
-		}
+		// $scope.makeAllActiveClasses = function() {
+		// 	$location.url('/');
+		// 	$scope.folders.forEach(function(folder){
+		// 		folder.inactive = false;
+		// 	})
+		// }
 
-		$scope.openMainFolder = function(index) {
-			$location.url("/" + $scope.folders[index].class);
-		}
+		// $scope.openMainFolder = function(index) {
+		// 	$location.url("/" + $scope.folders[index].class);
+		// }
 	})
