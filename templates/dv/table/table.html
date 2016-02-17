@@ -1,0 +1,87 @@
+<div class="row">
+
+    <ul class="nav nav-tabs margin-top-50">
+      <li role="presentation"><a href="#/sales"><i class="fa fa-pie-chart"></i> Sales</a></li>
+      <li role="presentation"><a href="#/units"><i class="fa fa-pie-chart"></i> Units</a></li>
+      <li role="presentation" class="active"><a href="#/table"><i class="fa fa-table"></i> Table</a></li>
+      <li role="presentation" class="pull-right"><a href="#/"><i class="fa fa-home fa-2x"></i></a></li>
+      <li role="presentation" class="pull-right" ng-click="snapshot()"><a href=""><i class="fa fa-floppy-o fa-2x"></i></a></li>
+      <li role="presentation" class="pull-right"><a href="#/dialog"><i class="fa fa-plus"></i> New</a></li>
+    </ul>
+    
+</div>
+
+<div class="row">
+    <div class="pull-left font-size-20 font-weight-bold">Wine Sales ({{outlet}} - {{weeks}} Weeks)</div>	
+</div>
+<form class="margin-top-25">
+  <div class="form-group">
+    <div class="input-group">
+      <div class="input-group-addon"><i class="fa fa-search color-gold"></i></div>
+      <input type="text" class="form-control" placeholder="Search for supplier..." ng-model="searchData">
+    </div>      
+  </div>
+</form>
+
+<table class="mui-table">
+	<thead>
+        <tr>
+            <th ng-click="sortType = 'Supplier'; sortReverse = !sortReverse">
+        		Supplier
+        		<span ng-show="sortType == 'Supplier' && !sortReverse" class="fa fa-caret-down colorRed"></span>
+				<span ng-show="sortType == 'Supplier' && sortReverse" class="fa fa-caret-up colorRed"></span>
+            </th>
+            <th ng-click="sortType = '$Share'; sortReverse = !sortReverse">
+            	$ Share
+            	<span ng-show="sortType == '$Share' && !sortReverse" class="fa fa-caret-down colorRed"></span>
+    			<span ng-show="sortType == '$Share' && sortReverse" class="fa fa-caret-up colorRed"></span>
+            </th>
+            <th ng-click="sortType = '$Sales'; sortReverse = !sortReverse">
+            	$ Sales
+            	<span ng-show="sortType == '$Sales' && !sortReverse" class="fa fa-caret-down colorRed"></span>
+    			<span ng-show="sortType == '$Sales' && sortReverse" class="fa fa-caret-up colorRed"></span>
+            </th>
+            <th ng-click="sortType = '$SalesChg'; sortReverse = !sortReverse">
+            	% Sales Chg
+            	<span ng-show="sortType == '$SalesChg' && !sortReverse" class="fa fa-caret-down colorRed"></span>
+    			<span ng-show="sortType == '$SalesChg' && sortReverse" class="fa fa-caret-up colorRed"></span>
+            </th>
+            <th ng-click="sortType = 'UnitShare'; sortReverse = !sortReverse">	            	
+            	Units Share
+            	<span ng-show="sortType == 'UnitShare' && !sortReverse" class="fa fa-caret-down colorRed"></span>
+    			<span ng-show="sortType == 'UnitShare' && sortReverse" class="fa fa-caret-up colorRed"></span>
+            </th>
+            <th ng-click="sortType = 'Units'; sortReverse = !sortReverse">
+              	Units
+            	<span ng-show="sortType == 'Units' && !sortReverse" class="fa fa-caret-down colorRed"></span>
+    			<span ng-show="sortType == 'Units' && sortReverse" class="fa fa-caret-up colorRed"></span>
+            </th>		            
+            <th ng-click="sortType = 'UnitsChg'; sortReverse = !sortReverse">
+            	% Units Chg
+            	<span ng-show="sortType == 'UnitsChg' && !sortReverse" class="fa fa-caret-down colorRed"></span>
+    			<span ng-show="sortType == 'UnitsChg' && sortReverse" class="fa fa-caret-up colorRed"></span>
+            </th>
+        </tr>
+    </thead>
+  	<tr dir-paginate="table in tableData | orderBy:sortType:sortReverse | filter:searchData | itemsPerPage:6">
+    	<td>{{ table.Supplier }}</td>
+    	<td>{{ table.$Share * 100 | number:0}}%</td>		    	
+    	<td>${{ table.$Sales | number }}</td>		    	
+    	<td>{{ table.$SalesChg * 100 | number:0}}%</td>
+    	<td>{{ table.UnitShare * 100 | number:0}}%</td>
+    	<td>{{ table.Units | number }}</td>
+    	<td>{{ table.UnitsChg * 100 | number:0}}%</td>
+  	</tr>
+</table>
+
+<div class="text-center">
+	<dir-pagination-controls
+		class="text-center"
+    	max-size="5"
+    	direction-links="false"
+    	boundary-links="true" >
+	</dir-pagination-controls>
+</div>
+
+<span class="arrow-left fa fa-chevron-left fa-2x" ng-click="previousItem()"></span>
+<span class="arrow-right fa fa-chevron-right fa-2x" ng-click="nextItem()"></span>

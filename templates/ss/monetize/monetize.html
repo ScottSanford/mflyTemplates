@@ -1,0 +1,177 @@
+<html>
+<head>
+    <title>Slide 12</title>
+	<meta name="viewport" content="width=device-width, user-scalable=no">
+    <link rel="stylesheet" type="text/css" href="css/mflyStyles.css">
+    <link rel="stylesheet" type="text/css" href="css/slide.css">
+
+    <script src="js/jquery-1.10.2.min.js"></script>
+    <script src="js/numeral.min.js"></script>
+    <script src="js/jquery.hammer-full.min.js"></script>
+
+    <!-- this is the file that fake-initializes AirShip for local development COMMENT THIS OUT BEFORE UPLOADING -->
+    <!--<script src="js/mflyTestRunner.js"></script>-->
+    <script src="js/Base64.js"></script>
+    <script src="js/mflyCommands.js"></script>
+    <script type="text/javascript">
+
+    var urlPrefix = (typeof MFLYTESTRUNNER != 'undefined' && MFLYTESTRUNNER ? 'http://localhost/' : 'mfly://');
+    mflyCommands.setPrefix(urlPrefix);
+	$(document).ready(function () {
+	 // Handle swipes with Hammer.js
+     	 $("body").hammer({ drag_lock_to_axis: true }).on('swipeleft swiperight drag',
+		 function (event) {
+				   event.gesture.preventDefault();
+				if (event.type == 'drag') {
+					return;
+				    }
+			        if (event.type == 'swipeleft') {
+  				    mflyCommands.next();
+  				} else if (event.type == 'swiperight') {
+  				    mflyCommands.previous();
+  				}
+			}); // end swipes with hammer.js
+	 });
+     </script>
+
+
+    <script src="js/formulas.js"></script>
+    <script src="js/utilities.js"> </script>
+</head>
+<body style="margin:auto">
+    <div id="slide">
+		<div id="loading"><div>Loading...</div></div>
+
+        <h1>Monetize Your Business</h1>
+
+        <div id="account-name">
+            <form id="account-name-form">
+                <input type="text" class="textos" id="s12_acct_name" name="s12acctName" value="" placeholder="enter account name" tabindex="1" />
+            </form>
+        </div>
+        <!-- main area with forms -->
+        <div id="center-area">
+            <div id="total-sales">
+                <form id="total-sales-form">
+                    <div class="input-heading">
+                        Account's Total Sales
+                    </div>
+                    <input type="tel" class="textos" id="s12_acct_total_sales" name="s12acctTotalSales" value="" placeholder="enter dollar amount" tabindex="2" />
+                </form>
+            </div>
+            <div id="arrows-first">
+                <div class="neck-hold">
+                    <div class="neck top-arrow">
+                        <div class="arrow-right"></div>
+                    </div>
+                    <div class="neck bottom-arrow">
+                        <div class="arrow-right"></div>
+                    </div>
+                </div>
+            </div>
+            <!-- Total Alcohol Beverages -->
+            <div id="tab">
+                <form id="tab-form">
+                    <div class="input-heading">
+                        TAB
+                    </div>
+                    <input type="number" id="s12_tab_as_percent" name="s12tabAsPercent" value="" class="percent_group_1 percent" placeholder="alcohol sales %" tabindex="3" />
+                    <span>%</span>
+                </form>
+            </div>
+            <p id="tab-as-dollars" class="fill-value"></p>
+            <!-- three subsets of TAB -->
+            <div id="beer">
+                <form id="tab-beer-form">
+                    <div class="input-heading">
+                        Beer
+                    </div>
+                    <input type="number" id="s12_tab_beer_as_percent" name="s12tabBeerAsPercent" class="percent_group_2 percent" value="" placeholder="beer as % of TAB" tabindex="5" />
+                    <span>%</span>
+                </form>
+            </div>
+            <p id="tab-beer-as-dollars" class="fill-value"></p>
+            <div id="wine">
+                <form id="tab-wine-form">
+                    <div class="input-heading">
+                        Wine
+                    </div>
+                    <input type="number" id="s12_tab_wine_as_percent" name="s12tabWineAsPercent" class="percent_group_2 percent" value="" placeholder="wine as % of TAB" tabindex="6" />
+                    <span>%</span>
+                </form>
+            </div>
+            <p id="tab-wine-as-dollars" class="fill-value"></p>
+            <div id="spirits">
+                <form id="tab-spirits-form">
+                    <div class="input-heading">
+                        Spirits
+                    </div>
+                    <input type="number" id="s12_tab_spirits_as_percent" name="s12tabSpiritsAsPercent" class="percent_group_2 percent" value="" placeholder="spirits as % of TAB" tabindex="7" />
+                    <span>%</span>
+                </form>
+            </div>
+            <p id="tab-spirits-as-dollars" class="fill-value"></p>
+            <!-- Food portion of Total Sales -->
+            <div id="food">
+                <form id="tab-food-form">
+                    <div class="input-heading">
+                        Food
+                    </div>
+                    <input type="number" id="s12_tab_food_as_percent" name="s12tabFoodAsPercent" class="percent_group_1 percent" value="" placeholder="food sales as %" tabindex="4" />
+                    <span>%</span>
+                </form>
+            </div>
+            <p id="tab-food-as-dollars" class="fill-value"></p>
+            <div id="arrows-second">
+                <div class="neck-hold">
+                    <div class="neck top-arrow">
+                        <div class="arrow-right"></div>
+                    </div>
+                    <div class="neck middle-arrow">
+                        <div class="arrow-right"></div>
+                    </div>
+                    <div class="neck bottom-arrow">
+                        <div class="arrow-right"></div>
+                    </div>
+                </div>
+            </div>
+            <div id="goal">
+                <form id="grow-total-beverage-by-form">
+                    <div class="input-heading">
+                        Grow Total
+                        Beverage by
+                    </div>
+                    <input type="number" id="s12_grow_total_beverage_by" name="s12growTotalBeverageBy" class="percent" value="" placeholder="growth target as %" tabindex="8" />
+                    <span>%</span>
+                </form>
+            </div>
+            <div id="arrows-last">
+                <div class="neck top-arrow">
+                    <div class="arrow-right"></div>
+                </div>
+            </div>
+            <h2 id="goal-growth-heading">
+                WHAT IS YOUR<br>
+                BEVERAGE GROWTH GOAL?
+            </h2>
+            <div id="calculated-totals">
+                <span id="beer-target-growth-span" class="targeted-growth-text">Beer</span>
+                <div id="beer-target-growth" class="targeted-growth-val"></div>
+                <span id="wine-target-growth-span" class="targeted-growth-text">Wine</span>
+                <div id="wine-target-growth" class="targeted-growth-val"></div>
+                <span id="spirits-target-growth-span" class="targeted-growth-text">Spirits</span>
+                <div id="spirits-target-growth" class="targeted-growth-val"></div>
+            </div>
+            <a id="clearall" class="dummy" href="#">Clear All</a>
+            <a id="recalculate" class="dummy" href="#">Recalculate</a>           
+        </div>
+        <!-- #center-area -->
+    </div>
+	
+    <!-- 	<a href="javascript:Load();"> Document Ready </a>
+ #slide -->
+
+    <div id="log">
+    </div>
+</body>
+</html>

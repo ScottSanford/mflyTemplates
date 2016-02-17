@@ -1,0 +1,68 @@
+<div class="panel-body" id="summary-body">
+
+<!--   <span class="alert alert-info" ng-show="isViewLoading">Loading the view... </span>
+ -->
+    <table class="table">
+      <thead>
+       <tr class="summary-tr">
+          <th>Quarterly</th>
+          <th>Active Users</th>
+          <th>Content Views</th>
+          <th>Guest Users</th>
+          <th>Guest Views</th>
+       </tr>
+      </thead>
+        <tbody>
+          <tr ng-repeat="quarterly in quarters track by $index">
+           <td>{{quarterly.date}}</td>
+           <td>{{quarterly.activeUsers.length | number}}</td>
+           <td>{{quarterly.allViewsCount | number}}</td>
+           <td>{{quarterly.guestUsersCount | number}}</td>
+           <td>{{quarterly.guestViewsCount | number}}</td> 
+          </tr>    
+        </tbody> 
+    </table>
+
+     <table class="table">
+      <thead>
+       <tr class="summary-tr">
+          <th>Monthly</th>
+          <th>Active Users</th>
+          <th>Content Views</th>
+          <th>Guest Users</th>
+          <th>Guest Views</th>
+       </tr>
+      </thead>
+        <tbody>
+          <tr ng-repeat="monthly in months track by $index">
+           <td>{{monthly.date}}</td>
+           <td>{{monthly.activeUsers.length | number}}</td>
+           <td>{{monthly.allViewsCount | number}}</td>
+           <td>{{monthly.guestUsersCount | number}}</td>
+           <td>{{monthly.guestViewsCount | number}}</td>
+          </tr>    
+        </tbody> 
+    </table>
+
+    <table class="table">
+      <thead>
+       <tr class="summary-tr">
+          <th>Week Ending</th>
+          <th>Active Users</th>
+          <th>Content Views</th>
+          <th>Guest Users</th>
+          <th>Guest Views</th>
+       </tr>
+      </thead>
+        <tbody>
+          <tr ng-repeat="weekly in weeks track by $index">
+             <td>{{weekly.date}}</td>
+             <td>{{weekly.activeUsers.length | number}}</td>
+             <td>{{weekly.allViewsCount | number}}</td>
+             <td>{{weekly.guestUsersCount | number}}</td>
+             <td>{{weekly.guestViewsCount | number}}</td>
+          </tr>    
+        </tbody> 
+    </table> 
+
+</div>

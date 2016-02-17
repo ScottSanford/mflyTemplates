@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Sales Play Selector - Ariba</title>
+		<link type="text/css" rel="stylesheet" href="AribaScript.css" />
+		
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<meta name="viewport" content="width=device-width, user-scalable=no,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0" />
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="format-detection" content="telephone=no" />
+		
+		<script type="text/javascript" src="script/jquery-1.8.2.min.js"></script>
+		<script type="text/javascript" src="script/jquery.tmpl.js"></script>
+		<script type="text/javascript" src="script/jquery.history.js"></script>
+		
+		<script type="text/javascript" src="script/hammer.js"></script>
+		<script type="text/javascript" src="script/jquery.hammer.js"></script>
+		<script type="text/javascript" src="script/jquery.specialevent.hammer.js"></script>
+		
+		<script type="text/javascript" src="script/navigation.js"></script>
+		<script type="text/javascript" src="script/content.js"></script>
+		<script type="text/javascript" src="script/models.js"></script>
+		<script type="text/javascript" src="script/solutions.js"></script>
+		<script type="text/javascript" src="script/breadcrumbs.js"></script>
+		<script type="text/javascript" src="script/salesPlaySolutions.js"></script>
+		
+		<script type="text/javascript" src="script/script.js"></script>
+		<script type="text/javascript" src="script/iPhone.js"></script>
+		<script type="text/javascript" src="script/iPad.js"></script>
+		<script type="text/javascript" src="script/moment.min.js"></script>				
+		<script type="text/javascript" src="script/events.js"></script>
+<!-- 		<script type="text/javascript" src="script/mflytestrunner.js"></script>		 -->
+		<script type="text/javascript">
+			
+			var static = false,
+				models = null,
+				breadcrumbsController = null,
+				aribaController = null,
+				iPhoneController = null,
+				root,
+				trainingId = "9e8791d09fc148878d3b2e177ed2b5d7product55284";
+				corporateinformationId = "9e8791d09fc148878d3b2e177ed2b5d7product60042";
+				campaignsId = "9e8791d09fc148878d3b2e177ed2b5d7product75702";
+				competitionId = "9e8791d09fc148878d3b2e177ed2b5d7product82053";
+				
+			$(document).ready(function () {
+				
+				if((navigator.userAgent.match(/iPhone/i)) || (navigator.userAgent.match(/iPod/i))) {
+					if (document.cookie.indexOf("iphone_redirect=false") == -1) {
+						iPhoneController = new IPhoneController();
+						iPhoneController.init();
+					}  
+				} else {
+						ipadController = new iPadController();
+ 						ipadController.init();
+ 					}
+
+
+
+					// ipadController = new iPadController();
+					// ipadController.init();
+				
+				models = new Models();
+				
+				
+				
+				
+				aribaController = new AribaController();
+				
+				breadcrumbsController = new BreadcrumbsController();
+				breadcrumbsController.init();
+				
+				if(static) {
+					mflyInit(contentArray);
+				}
+			
+				function reorient(e) {
+					if(window.orientation == 0 || window.orientation == 180) {
+							$("body").removeClass("landscape").addClass("portrait");
+							
+						} else {
+							$("body").addClass("landscape").removeClass("portrait");
+						}
+						
+						aribaController.contentHeightAdjustments();
+					}
+				
+				window.onorientationchange = reorient;
+				window.setTimeout(reorient, 0);
+				
+				// Disable native iOS scroll bounce
+				$('body').on("touchmove", function (e) {
+					if (!$('.scroll[scroll=true]').has($(e.target)).length) e.preventDefault();
+				});
+			});
+			
+			function mflyInit(_array) {
+				
+				models.setDataArray(_array);
+				root = models.getItem("__root__");
+				
+				for (var i = 0; i < root.items.length; i++) {
+					var item = models.getItem(root.items[i]);
+					if(item.type == "folder") {
+						// console.log(item);
+					}
+				}
+				
+				if($("body").find("section").size() == 1) {
+					aribaController.init();
+				}
+			}
+			
+			function mflyDataInit (_params) {
+				return '{ "mflyInitVersion" : "2", "mflyWideScreenSupport" : "false" }';
+			}
+			
+			function mflyDownloadStatus (_value) {  }
+			function mflySync (_array) {  }
+			function mflyResume () {  }
+		</script>
+	</head>
+	
+	<body class="portrait">
+		
+		<div id="rotateMessage">
+			<div class="text">
+				Please rotate device to portrait view.
+			</div>
+		</div>
+		
+		<div class="exit"></div>
+		
+		<nav id="breadcrumbs">
+			<ul></ul>
+		</nav>
+		
+		
+		<div class="mainWrapper">
+			<section id="home" style="display:block;">
+				<header>
+					<div id="favorite-collections" name="collections">
+						<span>Favorite<br />Collections</span>
+						<div></div>
+					</div>
+					<div class="banner"></div>
+					<h1>SalesKit</h1>
+					<div class="oneteam"></div>
+					<div class="clear"></div>
+				</header>
+				<div class="gradientBg">
+					<div class="inner"></div>
+				</div>
+				<div class="clear"></div>
+			</section>
+			
+			<nav id="bottomLinks" style="display:none;"><div class="inner"></div></nav>
+			<div class="email-share">
+			  <strong>Share the App:</strong><br />
+			  <a href="http://www.AribaSalesKit.com"><strong>www.AribaSalesKit.com</strong></a>
+			</div>
+			<div class="search button" style="display:block">
+				<div class="icon"></div>
+				Search
+			</div>
+		</div>
+		
+		<script id="breadcrumbItem" type="text/x-jquery-tmpl">
+			<li section="${section}" action="${action}" id="${id}" ids="${ids}">${section}</li>
+		</script>
+		
+		<script id="solutionAdditions" type="text/x-jquery-tmpl">
+			${title}:<br/>
+			<span id='${id}'>${name}</span><br/>
+		</script>
+		
+		<script id="headerTemplate" type="text/x-jquery-tmpl">
+			<header>
+				<div class="banner"></div>
+				<div class="text left">
+					<h2>${title}</h2>
+					<h3>${description}</h3>
+				</div>
+				<div class="clear"></div>
+			</header>
+		</script>
+		
+		<script id="sellingTemplate" type="text/x-jquery-tmpl">
+			<div class="gradientBg box" status="yes" selection="1">
+				<div class="left QSide">
+					<div class="text">
+						Are they an SAP customer with ECC 6.0 or Later?
+					</div>
+				</div>
+				<div class="ASide right">
+					<div class="buttonWrapper">
+						<div class="button selected left yes">
+							Yes
+						</div>
+						<div class="button left no">
+							No
+						</div>
+						<div class="clear"></div>
+					</div>
+				</div>
+				<div class="clear"></div>
+			</div>
+			
+			<div class="gradientBg box" status="yes" selection="2">
+				<div class="left QSide">
+					<div class="text">
+						Have they deployed SRM or another vendors eProcurement solution?
+					</div>
+				</div>
+				<div class="ASide right">
+					<div class="buttonWrapper">
+						<div class="button selected left yes">
+							Yes
+						</div>
+						<div class="button left no">
+							No
+						</div>
+						<div class="clear"></div>
+					</div>
+				</div>
+				<div class="clear"></div>
+			</div>
+			
+			<div class="gradientBg box" status="no" selection="3">
+				<div class="left QSide">
+					<div class="text">
+						Is the PRIMARY audience Treasury, AP, or one which does NOT care about the ordering process?
+					</div>
+				</div>
+				<div class="ASide right">
+					<div class="buttonWrapper">
+						<div class="button left yes">
+							Yes
+						</div>
+						<div class="button selected left no">
+							No
+						</div>
+						<div class="clear"></div>
+					</div>
+				</div>
+				<div class="clear"></div>
+			</div>
+			
+			<div class="submitForm button right" style="margin-bottom:20px;">Go</div>
+			<div class="clear"></div>
+		</script>
+		
+		<script id="popupalert" type="text/x-jquery-tmpl">
+			<div class="assetPopup" assetid="${id}">
+				<div class="arrow"></div>
+				<div class="content">
+					<div class="inner">
+						<a href="mfly://control/showAddToCollection?id=${id}&x=${offsetLeft}&y=${offsetTop}&w=5&h=20">Add to Collection</a>
+						<a class="email-enabled" href="mfly://control/email/${id}">E-Mail</a>
+						<a class="cancel">Cancel</a>				
+					</div>
+				</div>
+			</div>
+		</script>
+		
+		<script id="assetItemTemplate" type="text/x-jquery-tmpl">
+			<div class="asset" id="${id}" type="${type}">
+				<div class="add"> + </div>
+				<div class="thumbnail">
+					<img src="${thumbnailUrl}" border="0" alt="" />
+				</div>
+				<div class="left name">${name}</div>
+				<div class="right icon" type="${type}">
+					{{if items}}<span class="item-count badge">${items.length}</span>{{/if}}
+				</div>
+				<div class="clear"></div>
+			</div>
+		</script>
+		
+		<script id="solutionTemplate" type="text/x-jquery-tmpl">
+			<div class="solutionsItem" id="${id}">
+				<div class="left">
+					<div class="leftColumn gradientBg">
+						<div class="videoWrapper"></div>
+						<div class="name">${name}</div>
+					</div>
+					<div class="rightColumn right gradientBg" style="padding:0 10px; margin-top:10px; margin-right:20px;">
+						<div class="right assets" id="${id}">
+							<div class="icon"></div>
+							Assets
+						</div>
+						<div class="right iPhoneMoreDescription">
+							<div class="icon"></div>
+							Details
+						</div>
+						<div class="clear"></div>
+					</div>
+				</div>
+				<div class="left content gradientBg">
+					${description}
+				</div>
+				<div class="left asset"></div>
+				<div class="clear"></div>
+			</div>
+		</script>
+		
+		<script id="solutionItemTemplate" type="text/x-jquery-tmpl">
+			<div class="solution gradientBg box" id="${id}">
+				<div class="left content">
+					<div class="title">${name}</div>
+				</div>
+				<div class="clear"></div>
+			</div>
+		</script>
+		
+		<script id="videoTemplate" type="text/x-jquery-tmpl">
+			<div class="video" id="${id}">
+				<img src="${thumbnailUrl}" border="0" alt="" />
+				<div class="playIcon">
+					<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="80px" height="80px" viewBox="0 0 80 80" enable-background="new 0 0 80 80" xml:space="preserve">
+						<polygon fill="#EEAA1F" points="12.276,7.016 12.276,70.374 72.408,40.35 "/>
+					</svg>
+				</div>
+			</div>
+		</script>
+		
+	</body>
+</html>

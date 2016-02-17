@@ -1,5 +1,6 @@
 angular.module("mflyTemplateApp", [
         'ngRoute', 
+        'myDirectives'
         ])
 
         .config(function ($routeProvider, $compileProvider) { 
@@ -7,8 +8,12 @@ angular.module("mflyTemplateApp", [
               $compileProvider.imgSrcSanitizationWhitelist(/^(mfly:\/\/data\/entry|https:\/\/)/);  
               $routeProvider
                 .when('/', {
-                    templateUrl: 'components/ui/ui-1/ui-1.html',
-                    controller: 'UI1Ctrl'
+                    templateUrl: 'components/side-bar-nav/home.html',
+                    controller: 'HomeCtrl'
+                })                
+                .when('/sub-folder', {
+                    templateUrl: 'components/side-bar-nav/sub-folder.html',
+                    controller: 'SubFolderCtrl'
                 })
                 .otherwise({
                     redirectTo: '/'

@@ -61,6 +61,11 @@ div[back-img]{
     background-repeat: no-repeat;
 }
 
+.side-nav-logo {
+	width:200px;
+	height:auto;
+}
+
 .ui-logo {
 	width:400px;
 	height:auto;

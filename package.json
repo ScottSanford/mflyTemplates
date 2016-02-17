@@ -9,6 +9,7 @@
   "author": "Scott Sanford",
   "license": "ISC",
   "devDependencies": {
+    "directory-tree": "^0.1.1",
     "gulp": "^3.9.1",
     "gulp-angular-filesort": "^1.1.1",
     "gulp-inject": "^3.0.0",
