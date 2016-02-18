@@ -1,6 +1,7 @@
 angular.module("mflyTemplateApp", [
         'ngRoute', 
-        'myDirectives'
+        'myDirectives', 
+        'smart-table'
         ])
 
         .config(function ($routeProvider, $compileProvider) { 
@@ -8,13 +9,9 @@ angular.module("mflyTemplateApp", [
               $compileProvider.imgSrcSanitizationWhitelist(/^(mfly:\/\/data\/entry|https:\/\/)/);  
               $routeProvider
                 .when('/', {
-                    templateUrl: 'components/side-bar-nav/home.html',
-                    controller: 'HomeCtrl'
+                    templateUrl: 'components/table/table.html',
+                    controller: 'TableCtrl'
                 })                
-                .when('/sub-folder', {
-                    templateUrl: 'components/side-bar-nav/sub-folder.html',
-                    controller: 'SubFolderCtrl'
-                })
                 .otherwise({
                     redirectTo: '/'
                 });

@@ -1,0 +1,28 @@
+<table st-table="rowCollection" class="table table-striped">
+  <thead>
+    <tr>
+        <th st-sort="firstName">first name</th>
+        <th st-sort="lastName">last name</th>
+        <th st-sort="birthDate">birth date</th>
+        <th st-sort="balance">balance</th> 
+        <th st-sort="email">email</th> 
+    <tr>
+        <th colspan="5">
+          <input st-search="firstName" class="form-control" placeholder="Search the table ..." type="text"/>
+        </th>
+    </tr>
+  </thead>
+  <tbody>
+  <tr ng-repeat="row in rowCollection">
+    <td>{{row.firstName}}</td>
+    <td>{{row.lastName}}</td>
+    <td>{{row.birthDate}}</td>
+    <td>{{row.balance}}</td>
+    <td>{{row.email}}</td>
+  </tr>
+  </tbody>
+</table>
+
+<mfly-tabs></mfly-tabs>
+
+<mfly-logo img-width="400"></mfly-logo>

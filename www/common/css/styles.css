@@ -44,6 +44,22 @@ w
 	color:#ff0000;
 }
 
+.arrow-left {
+  position: fixed;
+  bottom: 10px;
+  left:10px;
+  opacity: .2;
+  z-index:100000000;
+}
+
+.arrow-right {
+  position: fixed;
+  bottom: 10px;
+  right:10px;
+  opacity: .2;
+  z-index:100000000;
+}
+
 /*===================================================================================
 
 
@@ -73,6 +89,11 @@ div[back-img]{
 	position: absolute;
 	top:15px;
 	left:15px;
+}
+
+.mfly-logo {
+	width:200px;
+	height:auto;
 }
 
 /********       @Featured    *******/

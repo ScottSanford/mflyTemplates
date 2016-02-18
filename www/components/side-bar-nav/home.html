@@ -1,10 +1,10 @@
 
-<div class="row">
+<!-- <div class="row">
 	<div class="col-sm-4">
 		<img class="side-nav-logo" ng-src="{{logo}}">
 	</div>
 	<div class="col-sm-8"></div>
-</div>
+</div> -->
 
 <div class="row no-gutter mainnav-container">
 	<div class="col-sm-4 nav-container">
@@ -28,4 +28,12 @@
 	<div class="col-sm-8">
 		<img src="common/img/mainlandingimage.jpg" class="img-responsive home-img">
 	</div>	
+</div>
+
+<contact-card friend="testData" title="'Contact Card'"></contact-card>
+
+<mfly-logo img="logo"></mfly-logo>	
+
+<div ng-repeat="p in people">
+	<div person-tile person="p"></div>
 </div>

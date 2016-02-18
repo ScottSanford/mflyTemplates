@@ -21,6 +21,8 @@
     "angular-route": "^1.5.0",
     "mfly-commands": "^1.9.10",
     "highcharts": "^4.2.3",
-    "bootstrap": "^3.3.6"
+    "bootstrap": "^3.3.6",
+    "angular-smart-table": "^2.1.7",
+    "font-awesome": "^4.5.0"
   }
 }

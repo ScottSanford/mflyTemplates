@@ -1,5 +1,37 @@
 angular.module('myDirectives', [])
 
+.directive('mflyLogo', function(){
+	return {
+		restrict: 'E', 
+		templateUrl: 'common/tmpls/mfly-logo.html', 
+		replace: true,
+		link: function(scope, element, attrs) {
+			var width = attrs.imgWidth;
+			console.log('Image Width:' , width);
+			element.css({
+				'width': width + 'px', 
+				'height': 'auto'
+			});
+		}
+	}
+})
+
+.directive('mflyTabs', function(){
+	return {
+		restrict: 'E', 
+		replace: true,
+		templateUrl: 'common/tmpls/mfly-tabs.html', 
+		link: function(scope, element, attrs) {
+			scope.prevItem = function() {
+				mflyCommands.previous();
+			}			
+			scope.nextItem = function() {
+				mflyCommands.next();
+			}
+		}
+	}
+})
+
 .directive('mflyBackImg', function(){
 	return function(scope, element, attrs) {
 		var url = attrs.backImg; 
@@ -8,26 +40,24 @@ angular.module('myDirectives', [])
 			'background-size': 'cover'
 		});
 	}
-})
+});
 
-.directive('mflyLogo', function(){
-	return {
-		restrict: 'E', 
-		scope: {
-			width: '@'
-		},
-		template: '<img src="common/img/logo.png">',
-		link: function(scope, element, attrs) {
-			attrs.width = 
-			attrs.logo = 
-			element.css({
-				'width': attrs.width,
-				'height': 'auto',
-				'z-index': '10',
-				'position': 'absolute',
-				'top':'15px',
-				'left':'15px'
-			});
-		}
-	}
-})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

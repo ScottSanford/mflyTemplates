@@ -48,4 +48,17 @@ angular.module('mflyTemplateApp')
 		// $scope.openMainFolder = function(index) {
 		// 	$location.url("/" + $scope.folders[index].class);
 		// }
+
+		$scope.people = [
+			{
+				name: 'Scott', 
+				age: '23', 
+				birthday: 'December 17th, 1992'
+			}, 			
+			{
+				name: 'John', 
+				age: '46', 
+				birthday: 'May 5th, 1980'
+			}
+		];
 	})
