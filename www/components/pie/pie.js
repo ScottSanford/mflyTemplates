@@ -2,41 +2,21 @@ angular.module('mflyTemplateApp')
 
 .controller('PieCtrl', function($scope, $location){
 
-    // UtilData.getGoogleWorkSheetData();
-    // $scope.sumTotal = UtilData.sumTotal();
-    // $scope.outlet   = name;
-    // $scope.weeks    = value;
-	$scope.mainMenuItems = [
-	        { href: '/', text: 'Main' },
-	        { href: '#', text: 'textHelper' },
-	        { href: function() { alert('hello!'); }, text: 'Call JS' },
-	        {
-	            text: 'Available Parameters', items: [
-	                {
-	                    text: 'mandatory',
-	                    items: [
-	                        { text: 'mmenu-id' },
-	                        { text: 'mmenu-items' }
-	                    ]
-	                },
-	                {
-	                    text: 'optional',
-	                    items: [
-	                        { text: 'mmenu-options' },
-	                        { text: 'mmenu-params' },
-	                        { text: 'mmenu-invalidate' }
-	                    ]
-	                }
-	            ]
-	        }
-	];
+  	$scope.exampleData = [
+  	  { key: "One", y: 5 },
+      { key: "Two", y: 2 },
+      { key: "Three", y: 9 },
+      { key: "Four", y: 7 },
+      { key: "Five", y: 4 },
+      { key: "Six", y: 3 },
+      { key: "Seven", y: 9 }
+    ];
 
-	$scope.show = function() {
-		mflyCommands.showControlBars();
-	};	
-
-	$scope.hide = function() {
-		mflyCommands.hideControlBars();
-	};
+	var colorArray = ['#000000', '#660000', '#CC0000', '#FF6666', '#FF3333', '#FF6666', '#FFE6E6'];
+	$scope.colorFunction = function() {
+		return function(d, i) {
+	    	return colorArray[i];
+	    };
+	}
 
 });

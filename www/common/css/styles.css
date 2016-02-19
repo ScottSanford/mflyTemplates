@@ -68,6 +68,35 @@ w
 	bottom:0;
 }
 
+.mfly-controlbar-header span, .mfly-controlbar-footer span {
+	text-align: center;
+	vertical-align: middle;
+	line-height: 40px;
+}
+
+.close-interactive {
+	padding-left:25px;
+}
+.more-options {
+	padding-right:20px;
+}
+
+.interactive-name {
+	font-size:18px;
+	padding:0 20px 0;
+}
+
+.footer-options span {
+	padding-right:40px;
+}
+
+.settings {
+	position: fixed;
+	z-index: 100;
+	bottom: 10px;
+	left: 10px;
+}
+
 /*===================================================================================
 
 

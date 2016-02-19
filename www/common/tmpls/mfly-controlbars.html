@@ -1,32 +1,44 @@
-<div>
-	<header class="mfly-controlbar-header">
-		<section class="row">
-			<div class="col-xs-2 font-size-18" ng-click="closeInteractive()">
-				Done
-			</div>
-			<div class="col-xs-8 text-center font-size-18">
-				Mediafly Reporting
-			</div>
-			<div class="col-xs-1 text-center">
-				<span class="fa fa-list fa-2x" ng-click="addToCollections()"></span>
-			</div>
-			<div class="col-xs-1 text-center font-size-18">
-				More
-			</div>
-		</section>
-	</header>
-	<footer class="mfly-controlbar-footer">
-		<section class="row">
-			<div class="col-xs-4"></div>
-			<div class="col-xs-4 text-center">
-				<span class="fa fa-fast-backward fa-2x" ng-click="goToPreviousItem()"></span>
-				<span>1 of 1</span>
-				<span class="fa fa-fast-forward fa-2x" ng-click="goToNextItem()"></span>
-			</div>
-			<div class="col-xs-4">
-				<span class="fa fa-pencil fa-2x" ng-click="addAnnotations()"></span>
-				
-			</div>
-		</section>
-	</footer>
+<div class="controlbar-content">
+	
+	<span class="fa fa-cog fa-2x settings" ng-click="showControls()"></span>
+
+	<div class="controlbar" ng-show="showControls">
+		<header class="mfly-controlbar-header">
+			<section class="row">
+				<div class="col-xs-2 font-size-18" ng-click="closeInteractive()">
+					<span class="close-interactive">Done</span>
+				</div>
+				<div class="col-xs-8 text-center font-size-18">
+					<span>Mediafly Reporting</span>
+				</div>
+				<div class="col-xs-1 text-center">
+					<span class="fa fa-list fa-2x" ng-click="addToCollections()"></span>
+				</div>
+				<div class="col-xs-1 text-center font-size-18">
+					<span class="more-options">More</span>
+				</div>
+			</section>
+		</header>
+		<footer class="mfly-controlbar-footer">
+			<section class="row">
+				<div class="col-xs-4">
+					<span class="fa fa-cog fa-2x close-interactive"></span>
+				</div>
+				<div class="col-xs-4 text-center">
+					<span class="fa fa-fast-backward fa-2x" ng-click="goToPreviousItem()"></span>
+					<span class="interactive-name">Interactive</span>
+					<span class="fa fa-fast-forward fa-2x" ng-click="goToNextItem()"></span>
+				</div>
+				<div class="col-xs-4 footer-options">
+					<div class="pull-right">
+						<span class="fa fa-pencil fa-2x" ng-click="addAnnotations()"></span>
+						<span class="fa fa-file-o fa-2x" ng-click="addNotes()"></span>
+						<span class="fa fa-comments fa-2x" ng-click="addComments()"></span>
+						<span class="fa fa-tv fa-2x" ng-click="addSecondScreen()"></span>
+					</div>
+				</div>
+			</section>
+		</footer>
+	</div>
+
 </div>

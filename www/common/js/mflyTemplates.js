@@ -54,30 +54,6 @@ angular.module('mflyTemplateApp').factory('mflyTemplates', function($http, $q, $
 
         },
 
-        makePieChart: function(jsonData) {
-            var dataArr = [];
-            for (var i = 0; i < jsonData.length; i++) {
-                var obj = {
-                    name: jsonData[i].Supplier, 
-                    y: jsonData[i].UnitShare, 
-                    tooltip: jsonData[i].Units
-                }
-                dataArr.push(obj);
-            }
-
-            var obj = {
-                util: dataArr,
-                titleText: 'Units', 
-                tooltip: 'Units: '
-            }
-
-            var chart = UtilData.pieChart(obj.titleText, obj.util, obj.tooltip);
-
-            return chart;
-        },
-
-        makeBarChart: function() {}, 
-
         // mflyCommands Wrappers 
 
         getFolder: function(folderID) {       
@@ -120,51 +96,6 @@ angular.module('mflyTemplateApp').factory('mflyTemplates', function($http, $q, $
 
     };
 
-    // local vars and functions 
-    function pieChart(titleText, dataPoints, tooltip) {
-        chart = new Highcharts.Chart({
-            chart: {
-                renderTo: 'pieChart', 
-                plotBackgroundColor: null,
-                plotBorderWidth: null,
-                plotShadow: false, 
-                type: 'pie'
-            },
-            credits: {
-                enabled: false
-            },
-            exporting: {
-                enabled: false
-            },
-            title: {
-                text: titleText
-            },
-            tooltip: {
-                formatter: function () {
-                    return '<b>' + this.point.name + '</b>: ' + tooltip + UtilData.numberWithCommas(this.point.tooltip);
-                }
-            },
-            plotOptions: {
-                pie: {
-                    allowPointSelect: true,
-                    cursor: 'pointer',
-                    dataLabels: {
-                        enabled: true,
-                        color: '#000000',
-                        connectorColor: '#F4C74E',
-                        formatter: function () {
-                            return '<b>' + this.point.name + '</b>: ' + (this.percentage).toFixed(2) + '%';
-                        }
-                    }
-                }
-            },
-            series: [{
-                name: "Suppliers", 
-                colorByPoint: true, 
-                data: dataPoints
-            }]
-        });
-    };
 
     return mflyTemplates;
  
