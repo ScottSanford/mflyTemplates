@@ -1,0 +1,33 @@
+<!-- UI Fullscreen Template -->
+
+<mfly-logo width="500"></mfly-logo>
+
+<div mfly-back-img="{{mflyBackImg}}" ></div>
+
+<div class="featured-container">
+	<div 
+		class="row margin-bottom-50" 
+		ng-repeat="folder in featuredData">
+			<img class="img-responsive col-xs-5 col-xs-offset-7 featured-thumb" 
+				ng-src="{{folder.thumbnailUrl}}" 
+				ng-click="openFolder(folder.id)"
+			>
+	</div>	
+</div>
+
+<div class="container-table">
+	<div class="row vertical-center-row">
+		<div class="text-center col-md-4 col-md-offset-4">
+			<img 
+				ng-repeat="folder in toplevelData" 
+				class="img-responsive thumb" 
+				ng-src="{{folder.thumbnailUrl}}" 
+				ng-click="openFolder(folder.id)"
+			>
+			<img class="img-responsive thumb" ng-src="{{myItemsImage}}" ng-click="openMyItems()">	
+		</div>
+	</div>
+</div>
+
+<mfly-tabs></mfly-tabs>
+

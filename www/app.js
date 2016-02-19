@@ -1,7 +1,8 @@
 angular.module("mflyTemplateApp", [
         'ngRoute', 
         'myDirectives', 
-        'smart-table'
+        'smart-table', 
+        'angular-mmenu'
         ])
 
         .config(function ($routeProvider, $compileProvider) { 
@@ -9,8 +10,8 @@ angular.module("mflyTemplateApp", [
               $compileProvider.imgSrcSanitizationWhitelist(/^(mfly:\/\/data\/entry|https:\/\/)/);  
               $routeProvider
                 .when('/', {
-                    templateUrl: 'components/table/table.html',
-                    controller: 'TableCtrl'
+                    templateUrl: 'components/pie/pie.html',
+                    controller: 'PieCtrl'
                 })                
                 .otherwise({
                     redirectTo: '/'

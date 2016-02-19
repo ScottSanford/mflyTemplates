@@ -7,7 +7,6 @@ angular.module('myDirectives', [])
 		replace: true,
 		link: function(scope, element, attrs) {
 			var width = attrs.imgWidth;
-			console.log('Image Width:' , width);
 			element.css({
 				'width': width + 'px', 
 				'height': 'auto'
@@ -32,16 +31,56 @@ angular.module('myDirectives', [])
 	}
 })
 
-.directive('mflyBackImg', function(){
-	return function(scope, element, attrs) {
-		var url = attrs.backImg; 
-		element.css({
-			'background-image': 'url(' + url + ')',
-			'background-size': 'cover'
-		});
+.directive('mflyControlBars', function(){
+	return {
+		restrict: 'E', 
+		replace: true, 
+		templateUrl: 'common/tmpls/mfly-controlbars.html', 
+		link: function(scope, element, attrs) {
+			scope.closeInteractive = function() {
+				mflyCommands.close();
+			}
+			scope.addToCollections = function() {
+				mflyCommands.getInteractiveInfo().done(function(data){
+				console.log("data.id :: ", data.id);
+				window.location = 'mfly://control/showAddToCollection?id=' + data.id + '&x=1&y=1&w=1&h=1'; 
+				});
+			}
+			scope.previousItem = function(){
+				mflyCommands.previous();
+			}
+			scope.nextItem = function() {
+				mflyCommands.next();
+			}
+		}
 	}
-});
+})
 
+.directive('mflyBackImg', function(){
+    return function(scope, element, attrs){
+        var url = attrs.mflyBackImg;
+        element.css({
+            'background-image': 'url(' + url +')',
+            'background-size' : 'cover'
+        });
+    };
+})
+
+.directive('uiFsThumbs', function(){
+	return {
+		restrict: 'E', 
+		scope: {
+			thumb: '='
+		}, 
+		replace: true, 
+		transclude: true,
+		templateUrl: 'common/tmpls/ui-fs.html',
+		controller: function($scope) {
+			console.log("thumb", $scope.thumb);
+		}
+
+	}
+})
 
 
 
